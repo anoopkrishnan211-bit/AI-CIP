@@ -1,0 +1,23 @@
+{
+  "name": "anira-ai-cip",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["frontend"],
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev -w frontend\" \"npm run dev:api\"",
+    "dev:api": "C:\\Users\\Anoop\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m uvicorn app.main:app --reload --app-dir backend",
+    "install:all": "C:\\Users\\Anoop\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m pip install -r backend/requirements.txt",
+    "test": "npm run test -w frontend && C:\\Users\\Anoop\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m pytest backend/tests",
+    "build": "npm run build -w frontend",
+    "lint": "npm run lint -w frontend",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.6.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
+
