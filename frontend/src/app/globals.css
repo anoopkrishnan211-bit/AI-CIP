@@ -2,6 +2,7 @@
 
 :root {
   --ink: #18231f;
+  --navy: #061637;
   --muted: #66736d;
   --paper: #f6f3ea;
   --card: #fffdf8;
@@ -83,7 +84,7 @@ button {
 .primary {
   border: 0;
   border-radius: 999px;
-  background: var(--teal);
+  background: linear-gradient(110deg, #2563eb, #0f9f91);
   color: #fff;
   padding: 0.8rem 1.2rem;
   font-weight: 700;
@@ -91,7 +92,7 @@ button {
 }
 
 .primary:hover {
-  background: var(--teal-dark);
+  background: linear-gradient(110deg, #1d4ed8, var(--teal-dark));
   transform: translateY(-1px);
 }
 
@@ -119,4 +120,3 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
-
