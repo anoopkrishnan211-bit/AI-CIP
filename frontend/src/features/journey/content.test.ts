@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assessmentQuestions, interviewQuestions, roles } from "./content";
+import { assessmentQuestions, interviewQuestions } from "./content";
 
 describe("career journey content", () => {
   it("keeps the seminar assessment concise and valid", () => {
@@ -9,9 +9,7 @@ describe("career journey content", () => {
     }
   });
 
-  it("offers enough interview and direction choices", () => {
+  it("collects interview evidence before the engine recommends a direction", () => {
     expect(interviewQuestions.length).toBeGreaterThanOrEqual(3);
-    expect(roles.length).toBeGreaterThanOrEqual(3);
   });
 });
-

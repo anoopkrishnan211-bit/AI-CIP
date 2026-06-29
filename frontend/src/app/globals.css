@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #18231f;
+  color-scheme: dark;
+  --ink: #f7fbff;
   --navy: #061637;
-  --muted: #66736d;
-  --paper: #f6f3ea;
-  --card: #fffdf8;
-  --line: #deddd4;
-  --teal: #0f766e;
-  --teal-dark: #0d5e58;
-  --mint: #d9eee8;
-  --gold: #d6a44b;
-  --coral: #e06d52;
+  --muted: #a8b6cc;
+  --paper: #061637;
+  --surface: #0b1e3d;
+  --card: #0b1e3d;
+  --line: rgba(157, 180, 215, 0.22);
+  --teal: #14d8a5;
+  --teal-dark: #062c2d;
+  --mint: #8ef1d2;
+  --gold: #f3b84b;
+  --coral: #ff8068;
 }
 
 * {
@@ -26,8 +28,9 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 85% 4%, rgba(214, 164, 75, 0.15), transparent 25rem),
-    radial-gradient(circle at 6% 55%, rgba(15, 118, 110, 0.1), transparent 28rem),
+    radial-gradient(circle at 88% 5%, rgba(124, 58, 237, 0.22), transparent 30rem),
+    radial-gradient(circle at 8% 55%, rgba(20, 216, 165, 0.13), transparent 32rem),
+    radial-gradient(circle at 52% 105%, rgba(37, 99, 235, 0.18), transparent 34rem),
     var(--paper);
   font-family: var(--font-sans), sans-serif;
 }
@@ -44,7 +47,7 @@ button {
 }
 
 ::selection {
-  background: var(--mint);
+  background: rgba(20, 216, 165, 0.3);
 }
 
 .display {
@@ -61,16 +64,18 @@ button {
 }
 
 .card {
-  border: 1px solid color-mix(in srgb, var(--line), transparent 18%);
-  background: color-mix(in srgb, var(--card), transparent 5%);
-  box-shadow: 0 22px 60px rgba(39, 55, 48, 0.08);
+  border: 1px solid var(--line);
+  background: rgba(11, 30, 61, 0.78);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(20px);
 }
 
 .field {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: #fff;
+  background: #0e274d;
+  color: var(--ink);
   padding: 0.85rem 1rem;
   outline: none;
   transition: border-color 160ms ease, box-shadow 160ms ease;
@@ -78,7 +83,7 @@ button {
 
 .field:focus {
   border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+  box-shadow: 0 0 0 4px rgba(20, 216, 165, 0.12);
 }
 
 .primary {
@@ -105,10 +110,175 @@ button {
 .secondary {
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: rgba(17, 43, 86, 0.8);
   color: var(--ink);
   padding: 0.75rem 1.1rem;
   font-weight: 700;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #60a5fa 5%, #a78bfa 45%, #14d8a5 95%);
+  background-clip: text;
+  color: transparent;
+}
+
+.status-pill,
+.surface-card,
+.upload-card,
+.icon-tile,
+.reasoning-row,
+.metric-card,
+.evidence-chip,
+.voice-studio {
+  background: rgba(17, 43, 86, 0.72);
+}
+
+.upload-card:hover,
+.option-card:hover {
+  background: rgba(24, 57, 108, 0.84);
+}
+
+.orb {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.65), rgba(20, 216, 165, 0.36));
+  filter: blur(3px);
+}
+
+.score-card,
+.score-panel {
+  background: linear-gradient(150deg, #112b56, #07162f 72%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.skill-chip {
+  background: rgba(20, 216, 165, 0.12);
+  color: #8ef1d2;
+}
+
+.option-card {
+  border-color: var(--line);
+  background: rgba(11, 30, 61, 0.66);
+}
+
+.option-card.selected {
+  border-color: var(--teal);
+  background: rgba(20, 216, 165, 0.11);
+  box-shadow: 0 0 0 2px rgba(20, 216, 165, 0.07);
+}
+
+.ai-pulse {
+  color: var(--teal);
+  background: radial-gradient(circle, rgba(20, 216, 165, 0.24), rgba(37, 99, 235, 0.15));
+  box-shadow: 0 0 0 12px rgba(20, 216, 165, 0.04), 0 0 50px rgba(20, 216, 165, 0.18);
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+.recommendation-hero {
+  border: 1px solid rgba(20, 216, 165, 0.25);
+  background: linear-gradient(135deg, rgba(20, 216, 165, 0.1), rgba(37, 99, 235, 0.12));
+}
+
+.match-score {
+  color: #8ef1d2;
+  background: rgba(20, 216, 165, 0.12);
+}
+
+.report-list.mint {
+  border: 1px solid rgba(20, 216, 165, 0.2);
+  background: rgba(20, 216, 165, 0.09);
+}
+
+.report-list.gold {
+  border: 1px solid rgba(243, 184, 75, 0.2);
+  background: rgba(243, 184, 75, 0.09);
+}
+
+.question-pill {
+  border: 1px solid var(--line);
+  background: rgba(6, 22, 55, 0.58);
+  color: var(--muted);
+}
+
+.question-pill.active {
+  border-color: var(--teal);
+  background: rgba(20, 216, 165, 0.12);
+  color: var(--teal);
+}
+
+.waveform {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.waveform span {
+  width: 3px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(#22c7d9, #14d8a5);
+  opacity: 0.42;
+}
+
+.waveform.active span {
+  opacity: 0.62;
+  animation: waveform 900ms ease-in-out infinite alternate;
+}
+
+.waveform.speaking span {
+  opacity: 1;
+  box-shadow: 0 0 9px rgba(20, 216, 165, 0.42);
+}
+
+.waveform.active span:nth-child(3n) {
+  animation-duration: 620ms;
+}
+
+.waveform.active span:nth-child(4n) {
+  animation-duration: 1.1s;
+}
+
+.priority-chip {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.625rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.priority-chip.high {
+  background: rgba(255, 128, 104, 0.15);
+  color: #ffad9d;
+}
+
+.priority-chip.medium {
+  background: rgba(243, 184, 75, 0.14);
+  color: #ffd582;
+}
+
+.priority-chip.low {
+  background: rgba(20, 216, 165, 0.12);
+  color: #8ef1d2;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.96);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes waveform {
+  from {
+    height: 8px;
+  }
+  to {
+    height: 42px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -118,5 +288,48 @@ button {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --ink: #101828;
+    --muted: #475467;
+    --paper: #fff;
+    --surface: #fff;
+    --card: #fff;
+    --line: #d0d5dd;
+    --teal: #087f70;
+    --mint: #087f70;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .noise,
+  .app-header,
+  nav,
+  .report-actions,
+  button {
+    display: none !important;
+  }
+
+  .card,
+  .surface-card,
+  .metric-card,
+  .evidence-chip,
+  .recommendation-hero,
+  .report-list {
+    break-inside: avoid;
+    background: #fff !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+  }
+
+  .score-panel {
+    color: #fff !important;
+    print-color-adjust: exact;
   }
 }

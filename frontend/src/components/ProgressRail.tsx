@@ -4,10 +4,10 @@ import type { StepId } from "@/types/career";
 const steps: Array<{ id: StepId; label: string }> = [
   { id: "profile", label: "You" },
   { id: "resume", label: "Resume" },
-  { id: "role", label: "Direction" },
-  { id: "interview", label: "Interview" },
   { id: "assessment", label: "Assessment" },
-  { id: "report", label: "Report" },
+  { id: "interview", label: "Interview" },
+  { id: "reasoning", label: "Intelligence" },
+  { id: "report", label: "Career Report" },
 ];
 
 export function ProgressRail({ active }: { active: StepId }) {
@@ -27,7 +27,7 @@ export function ProgressRail({ active }: { active: StepId }) {
                   className={`grid size-8 place-items-center rounded-full border text-xs font-extrabold ${
                     complete || current
                       ? "border-[var(--teal)] bg-[var(--teal)] text-white"
-                      : "border-[var(--line)] bg-white text-[var(--muted)]"
+                      : "border-[var(--line)] bg-[var(--surface)] text-[var(--muted)]"
                   }`}
                   aria-current={current ? "step" : undefined}
                 >
@@ -51,4 +51,3 @@ export function ProgressRail({ active }: { active: StepId }) {
     </nav>
   );
 }
-

@@ -12,15 +12,16 @@
 
 1. Privacy promise and no-login design — 1 minute.
 2. Upload and ATS evidence — 2 minutes.
-3. Career direction and role fit — 2 minutes.
-4. Interview coaching — 3 minutes.
-5. Assessment and skill gaps — 2 minutes.
-6. Readiness score, roadmap, and PDF — 2 minutes.
+3. Adaptive descriptive and objective assessment — 2 minutes.
+4. Voice interview, waveform, and live transcript — 3 minutes.
+5. Career Intelligence Engine reasoning stages — 1 minute.
+6. Explainable ranking, roadmap, and PDF — 3 minutes.
 
 ## Recovery
 
 - No internet: use seminar demo mode; every feature remains available.
+- Browser voice transcription unavailable: use the text response fields; engine behaviour is unchanged.
+- Microphone permission denied: the app explains the fallback and does not block the interview.
 - API unavailable: restart the API and use **Use sample profile** on the upload step.
 - Accidental refresh: start again; session-only reset is intentional and reinforces the privacy story.
 - Do not use a real student resume without consent during a public demonstration.
-

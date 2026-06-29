@@ -25,8 +25,8 @@
 
 ## Deliberately deferred
 
-- `langgraph` and `langchain`: the MVP has a linear, request-scoped flow; adding orchestration now increases failure modes without adding user value.
+- `langgraph` and `langchain`: the MVP has a bounded, request-scoped evidence graph; adding a runtime graph framework now increases failure modes without adding user value.
+- The Career Intelligence Engine is implemented with typed Python services and Pydantic contracts. It does not require LangGraph to preserve evidence, resolve conflicts, or rank careers.
 - `spaCy`: skill detection is currently transparent and vocabulary-based. Add spaCy only when a measured extraction benchmark justifies the model download and cold-start cost.
 - shadcn/ui CLI: the visual system is implemented as small local components. Individual Radix primitives can be added when accessibility behavior requires them.
 - Redis, SQL, object storage, auth SDKs, analytics, and queues: prohibited by the stateless MVP boundary.
-

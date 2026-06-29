@@ -14,7 +14,8 @@ Out of scope: authentication, accounts, payments, dashboards, analytics, notific
 flowchart LR
   B["Browser session\nNext.js"] -->|"multipart / JSON"| A["FastAPI API"]
   A --> P["In-memory document parser"]
-  A --> O["Structured AI gateway"]
+  A --> E["Career Intelligence Engine"]
+  E --> O["Structured narrative gateway"]
   O -->|"when configured"| OpenAI["OpenAI Responses API"]
   O -->|"seminar fallback"| D["Deterministic evaluator"]
   B --> PDF["Local PDF export"]
@@ -59,20 +60,27 @@ Returns API status, active mode (`demo` or `ai`), and version.
 
 Multipart field `file`; accepts PDF, DOCX, or TXT up to the configured size. Returns extracted text summary, detected skills, section coverage, and ATS score. File bytes remain request-scoped.
 
+### `POST /api/v1/career-intelligence/analyze`
+
+Accepts the complete browser evidence payload. Runs the five evaluation agents, resolves conflicting signals, and returns agent evidence plus the ranked Career Intelligence decision record.
+
 ### `POST /api/v1/reports/generate`
 
-Accepts the complete browser workflow payload and returns a `CareerReport`. AI mode uses a structured-output gateway; demo mode uses the same schema and a deterministic evaluator.
+Accepts the same evidence payload and returns a `CareerReport`. It always runs the deterministic Career Intelligence Engine first. AI mode may enrich only the headline and executive summary through a structured-output gateway.
 
 ## AI service interaction
 
 The conceptual agents are narrow prompt/schema services:
 
-1. Resume and ATS services convert extracted text into evidence.
-2. Interview and assessment evaluators score submitted answers.
-3. Career and skill-gap services rank role fit and missing capabilities.
-4. Roadmap and report services synthesize the final plan.
+1. Resume, ATS, assessment, interview, and skill-gap agents return typed evidence packets.
+2. The Career Intelligence Engine resolves shared dimensions and preserves material conflicts.
+3. The Career Recommendation Agent ranks six roles only after synthesis.
+4. Roadmap and Report agents create evidence-backed actions and the Career Intelligence Report.
+5. The optional OpenAI service enriches narrative without permission to change engine facts.
 
-For the MVP, one report orchestration request may combine compatible evaluation steps to reduce latency and cost. Prompts remain separate and structured schemas remain stable. LangGraph is deferred until branching, retries, or human-in-the-loop state makes a graph materially useful.
+The engine is a typed, request-scoped orchestrator rather than a hidden chain of prompts. LangGraph remains deferred until runtime branching, retries, or human-in-the-loop checkpoints make a graph materially useful. See `docs/CAREER_INTELLIGENCE_ENGINE.md` for weights and conflict rules.
+
+The browser offers progressive-enhancement voice capture through the Web Speech API. It requests microphone permission at action time, uses an in-memory Web Audio analyser for voice-activity indication, stops all media tracks when recording pauses or ends, stores transcript text only in React session state, and always retains a typed-answer fallback.
 
 ## Security and privacy
 
@@ -87,4 +95,3 @@ For the MVP, one report orchestration request may combine compatible evaluation 
 ## Future seams
 
 API clients, evaluation services, and report schemas are interfaces that can later gain authenticated persistence. Future storage must be added behind services; it must not leak into feature components.
-

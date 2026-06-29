@@ -2,7 +2,7 @@
 
 A privacy-first, session-only career readiness experience for students and early-career professionals.
 
-The MVP takes a learner from a resume upload through role discovery, a short interview, a written assessment, skill-gap analysis, and a downloadable career-readiness report. It deliberately has no account, database, or persistent profile.
+The MVP takes a learner from resume intelligence through an assessment and interview. Its Career Intelligence Engine then reconciles those signals, ranks six career paths, explains the evidence and disagreements, and produces a downloadable 30–60–90 day Career Intelligence Report. It deliberately has no account, database, or persistent profile.
 
 ## Seminar mode
 
@@ -31,7 +31,7 @@ npm.cmd run build
 ## Documentation
 
 - [Architecture](./ARCHITECTURE.md)
+- [Career Intelligence Engine](./docs/CAREER_INTELLIGENCE_ENGINE.md)
 - [Dependency inventory](./docs/DEPENDENCIES.md)
 - [Seminar runbook](./docs/SEMINAR_RUNBOOK.md)
 - [Task template](./TASK_TEMPLATE.md)
-

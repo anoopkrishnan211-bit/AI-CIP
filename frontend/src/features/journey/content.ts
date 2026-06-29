@@ -2,32 +2,7 @@ import type {
   AssessmentQuestion,
   InterviewQuestion,
   ResumeAnalysis,
-  RoleOption,
 } from "@/types/career";
-
-export const roles: RoleOption[] = [
-  {
-    id: "data-analyst",
-    title: "Data Analyst",
-    fit: 88,
-    description: "Turn messy information into decisions through analysis and storytelling.",
-    skills: ["SQL", "Excel", "Power BI", "Statistics"],
-  },
-  {
-    id: "product-analyst",
-    title: "Product Analyst",
-    fit: 82,
-    description: "Connect user behaviour, product metrics, and business outcomes.",
-    skills: ["Analytics", "Experiments", "SQL", "Communication"],
-  },
-  {
-    id: "business-analyst",
-    title: "Business Analyst",
-    fit: 78,
-    description: "Translate business needs into clear, testable solutions.",
-    skills: ["Requirements", "Process mapping", "Stakeholders", "Agile"],
-  },
-];
 
 export const interviewQuestions: InterviewQuestion[] = [
   {
@@ -114,5 +89,35 @@ export const sampleResume: ResumeAnalysis = {
     "Mirror role-specific keywords naturally.",
     "Place the strongest technical project above coursework.",
   ],
+  dimensionScores: {
+    resume_structure: 84,
+    ats_compatibility: 76,
+    formatting: 82,
+    grammar: 78,
+    achievements: 62,
+    action_verbs: 74,
+    project_quality: 72,
+    role_alignment: 82,
+    technical_skills: 86,
+    soft_skills: 76,
+    missing_information: 84,
+    keyword_optimization: 82,
+    readability: 86,
+    professional_tone: 78,
+    consistency: 83,
+    professional_summary: 80,
+    career_story: 74,
+  },
+  issues: [
+    {
+      category: "Achievements",
+      problem: "Two project bullets describe activity without measurable outcomes.",
+      explanation: "The contribution is visible, but its scale and effect are not.",
+      whyItMatters: "Recruiters need evidence of contribution, not only responsibilities.",
+      howToImprove: "Add truthful quantities such as records analyzed, time saved, or audience reached.",
+      example: "Analyzed 1,200 survey responses and reduced weekly reporting time by 30%.",
+      improvementPrompt: "Rewrite my project bullets with truthful measurable outcomes. Ask for missing numbers instead of inventing them.",
+      priority: "high",
+    },
+  ],
 };
-

@@ -3,11 +3,17 @@ import logging
 from fastapi import APIRouter, File, HTTPException, UploadFile, status
 
 from app.core.config import get_settings
+from app.features.intelligence.engine import CareerIntelligenceEngine
 from app.features.report.ai_service import AIReportService
 from app.features.report.evaluator import build_demo_report
 from app.features.resume.analyzer import analyze_resume
 from app.features.resume.parser import UnsupportedDocumentError, extract_text
-from app.schemas.career import CareerReport, ReportRequest, ResumeAnalysis
+from app.schemas.career import (
+    CareerIntelligenceAnalysis,
+    CareerReport,
+    ReportRequest,
+    ResumeAnalysis,
+)
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1")
@@ -52,16 +58,26 @@ async def analyze_resume_upload(file: UploadFile = File(...)) -> ResumeAnalysis:
 @router.post("/reports/generate", response_model=CareerReport)
 def generate_report(request: ReportRequest) -> CareerReport:
     settings = get_settings()
+    report = build_demo_report(request)
     if not settings.ai_enabled:
-        return build_demo_report(request)
+        return report
 
     try:
         service = AIReportService(
             api_key=settings.openai_api_key or "",
             model=settings.openai_model,
         )
-        return service.generate(request)
+        return service.enrich(report)
     except Exception:
         logger.exception("AI report generation failed; using deterministic fallback.")
-        return build_demo_report(request)
+        return report
 
+
+@router.post(
+    "/career-intelligence/analyze",
+    response_model=CareerIntelligenceAnalysis,
+)
+def analyze_career_intelligence(
+    request: ReportRequest,
+) -> CareerIntelligenceAnalysis:
+    return CareerIntelligenceEngine().analyze(request)
